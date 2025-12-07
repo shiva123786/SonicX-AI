@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Event Rescue - AI-Powered Crowd Management and Safety System" />
+    <title>Event Rescue - AI Safety Platform</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+        color: white;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+      
+      .loading-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
+      }
+      
+      .logo {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #ff6b6b, #ffa726);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        animation: pulse 2s infinite;
+      }
+      
+      .logo::before {
+        content: "🚨";
+        font-size: 36px;
+      }
+      
+      .title {
+        font-size: 3rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #ff6b6b, #ffa726, #42a5f5);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 16px;
+        text-align: center;
+        letter-spacing: -0.02em;
+      }
+      
+      .subtitle {
+        font-size: 1.2rem;
+        color: #a0a0a0;
+        margin-bottom: 40px;
+        text-align: center;
+        font-weight: 400;
+      }
+      
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      
+      .feature {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 24px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .feature:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+      
+      .feature-icon {
+        font-size: 2rem;
+        margin-bottom: 12px;
+        display: block;
+      }
+      
+      .feature-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #ffffff;
+      }
+      
+      .feature-desc {
+        font-size: 0.9rem;
+        color: #a0a0a0;
+        line-height: 1.5;
+      }
+      
+      .loading-bar {
+        width: 200px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2px;
+        margin-top: 40px;
+        overflow: hidden;
+      }
+      
+      .loading-progress {
+        height: 100%;
+        background: linear-gradient(90deg, #ff6b6b, #ffa726);
+        border-radius: 2px;
+        animation: loading 2s ease-in-out infinite;
+      }
+      
+      .status {
+        margin-top: 20px;
+        font-size: 0.9rem;
+        color: #42a5f5;
+        font-weight: 500;
+      }
+      
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+      
+      @keyframes loading {
+        0% { width: 0%; }
+        50% { width: 70%; }
+        100% { width: 100%; }
+      }
+      
+      .fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+      
+      @media (max-width: 768px) {
+        .title {
+          font-size: 2rem;
+        }
+        
+        .subtitle {
+          font-size: 1rem;
+        }
+        
+        .features {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        
+        .feature {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loading-container" id="loading">
+      <div class="logo"></div>
+      <h1 class="title">Event Rescue</h1>
+      <p class="subtitle">AI-Powered Crowd Management & Safety Platform</p>
+      
+      <div class="features">
+        <div class="feature">
+          <span class="feature-icon">🎯</span>
+          <div class="feature-title">Real-time Monitoring</div>
+          <div class="feature-desc">Advanced AI detection of crowd anomalies and safety threats</div>
+        </div>
+        
+        <div class="feature">
+          <span class="feature-icon">🚨</span>
+          <div class="feature-title">Emergency Response</div>
+          <div class="feature-desc">Instant alerts and automated dispatch system</div>
+        </div>
+        
+        <div class="feature">
+          <span class="feature-icon">📊</span>
+          <div class="feature-title">Analytics Dashboard</div>
+          <div class="feature-desc">Comprehensive insights and predictive analytics</div>
+        </div>
+        
+        <div class="feature">
+          <span class="feature-icon">🔍</span>
+          <div class="feature-title">Lost & Found</div>
+          <div class="feature-desc">AI-powered person search and identification</div>
+        </div>
+      </div>
+      
+      <div class="loading-bar">
+        <div class="loading-progress"></div>
+      </div>
+      
+      <div class="status">Initializing AI Safety Systems...</div>
+    </div>
+    
+    <div id="root"></div>
+    <script type="module" src="/src/index.tsx"></script>
+    
+    <script>
+      // Hide loading screen after React app loads
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const loading = document.getElementById('loading');
+          if (loading) {
+            loading.classList.add('fade-out');
+            setTimeout(function() {
+              loading.style.display = 'none';
+            }, 500);
+          }
+        }, 2000);
+      });
+      
+      // Hide loading if React takes too long
+      setTimeout(function() {
+        const loading = document.getElementById('loading');
+        if (loading && !loading.classList.contains('fade-out')) {
+          loading.classList.add('fade-out');
+          setTimeout(function() {
+            loading.style.display = 'none';
+          }, 500);
+        }
+      }, 5000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+opencv-python
+numpy
+pillow
+firebase-admin
+python-multipart
+pydantic
+requests
+python-dotenv
+SpeechRecognition
+pydub
+httpx
+openai
+flask
+ultralytics
+opencv-python-headless
